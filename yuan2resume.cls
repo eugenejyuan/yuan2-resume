@@ -31,7 +31,6 @@
 % ====================================================================
 % Font configuration
 % ====================================================================
-\RequirePackage{fontspec}
 
 % ---- Font file finder and executor ----
 % Arguments: #1=path, #2=family, #3=upright, #4=callback_macro, #5=extra_args_for_callback
@@ -119,18 +118,50 @@
   \YR@FindFontAndExec{#1}{#2}{#3}{\YR@SetupMainFont}{{#4}{#5}{#6}}%
 }
 
-\newcommand{\YR@fontconfig}{configs/fonts-\YR@fontset.tex}
+% ---- Compiler compatibility pdfLaTeX fallback ----
+\RequirePackage{iftex}
 
-\IfFileExists{\YR@fontconfig}{%
-  \input{\YR@fontconfig}%
-}{%
-  \ClassError{yuan2resume}{%
-    Font config file '\YR@fontconfig' not found.
-    Please check if 'configs/fonts-\YR@fontset.tex' exists%
+% Detect compiler type and handle pdfLaTeX compatibility
+\ifpdftex
+  \ClassWarning{yuan2resume}{%
+    ================================================================^^J%
+    WARNING: WRONG COMPILER DETECTED!^^J%
+    ================================================================^^J%
+    This template REQUIRES XeLaTeX or LuaLaTeX.^^J%
+    You are currently using pdfLaTeX.^^J%
+    ^^J%
+    Custom fonts will NOT work correctly with pdfLaTeX.^^J%
+    The document will compile but with fallback fonts.^^J%
+    ^^J%
+    TO FIX: Use XeLaTeX instead:^^J%
+    \space\space xelatex main.tex^^J%
+    ^^J%
+    Or in Overleaf: Settings -> Compiler -> XeLaTeX^^J%
+    ================================================================%
+  }
+  % pdfLaTeX does not support fontspec, use traditional font packages
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{lmodern}
+  % Define default font commands (fallback to standard LaTeX font families)
+  \newcommand{\TitleFont}{\rmfamily}
+  \newcommand{\SectionFont}{\rmfamily}
+  \newcommand{\CodeFont}{\ttfamily}
+\else
+  % XeLaTeX/LuaLaTeX path: use fontspec for custom font loading
+  \RequirePackage{fontspec}
+  \newcommand{\YR@fontconfig}{configs/fonts-\YR@fontset.tex}
+
+  \IfFileExists{\YR@fontconfig}{%
+    \input{\YR@fontconfig}%
   }{%
-    Check your spelling of the 'fontset' option or ensure the file exists.%
-  }%
-}
+    \ClassError{yuan2resume}{%
+      Font config file '\YR@fontconfig' not found.
+      Please check if 'configs/fonts-\YR@fontset.tex' exists%
+    }{%
+      Check your spelling of the 'fontset' option or ensure the file exists.%
+    }%
+  }
+\fi
 
 % ====================================================================
 % Title and contact information

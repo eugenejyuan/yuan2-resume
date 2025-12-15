@@ -16,11 +16,11 @@ An elegant academic resume template with two-column layout, optimized alignment,
    xelatex main.tex
    ```
 
-**Important:** This template requires **XeLaTeX** for compilation. pdfLaTeX cannot correctly import the fonts.
-
 ### Online Editing
 
-You can also use [Overleaf](https://www.overleaf.com/) for online editing and compilation:
+You can also use **[use this template on Overleaf with one click](https://www.overleaf.com/docs?snip_uri=https://github.com/eugenejyuan/yuan2-resume/archive/main.zip)** for online editing and compilation.
+
+Or manually:
 - Upload the project files
 - Set the compiler to **XeLaTeX** in the project settings
 - Compile and download your PDF
