@@ -1,0 +1,66 @@
+% Supports both 'default' (open source) and 'commercial' font styles.
+% To switch, set the fontset option: [fontset=default] for open source fonts, [fontset=commercial] for commercial fonts (requires manual download).
+\documentclass[fontset=default]{yuan2resume}
+
+\name{Yuan Yuan}
+\position{Ph.D. Candidate}
+\phone{(+86) 1111-2222-3333}
+\email{xxxx@xxxx.com}
+\homepage{https://xxxx.github.io}
+
+\begin{document}
+\maketitle
+
+\begin{cvtwocolumn}
+
+\begin{cvsection}{Professional Experience}
+  \cvpair{\textbf{ByteDance Ltd. }}{Shanghai, China}
+  \cvpair{\textbf{Research Scientist}, AI for Science Group}{2022 -- \textit{Present}}
+  \begin{cvitemize}
+    \item Developed and implemented machine learning models for research projects, contributing to multiple publications
+    \item Built scalable training infrastructure and optimized model performance using modern deep learning frameworks
+    \item Collaborated with cross-functional teams to deploy research prototypes into production systems
+  \end{cvitemize}
+\end{cvsection}
+
+\begin{cvsection}{Education}
+  \cvpair{\textbf{University of California, Berkeley}}{Berkeley, CA}
+  \cvpair{\textit{Ph.D. Candidate in Computer Science}}{Sept. 2020 -- \textit{Present}}
+  \begin{cvitemize}
+    \item Advisor: Prof. Alan Turing
+    \item Research Area: Large Language Models, Efficient Inference, Distributed Systems.
+    \item GPA: 3.96/4.0 (Rank: Top 1\%).
+  \end{cvitemize}
+  \cvpair{\textbf{Tsinghua University}}{Beijing, China}
+  \cvpair{\textit{B.S. in Electrical Engineering and Computer Sciences (EECS)}}{Sept. 2016 -- June 2020}
+  \begin{cvitemize}
+    \item Graduated with High Distinction (Magna Cum Laude).
+    \item Selected Coursework: Operating Systems (A+), Convex Optimization (A).
+  \end{cvitemize}
+\end{cvsection}
+
+\begin{cvsection}{Publications}
+  \begin{cvnumlist}
+    \item \textbf{Your Name}, Co-author. ``Xxxx Xxxx Xxxxxx Xx Xxx x Xxxx Xxxxx Xxxxx Xxxxxx.'' \textit{Proceedings of ACL}, 2023. (CCF-A)
+    \item \textbf{Your Name}, First Author. ``Xxxx Xxx X Xxxx Xxxxx Xxxxxx Xxxxx Xxxxxx.'' \textit{Proceedings of NeurIPS}, 2022. (CCF-A)
+    \item \textbf{Your Name}, Co-author. ``Xxx Xxxxxx Xxxxxx Xxxxx Xxxxxx Xxxxxx.'' \textit{Proceedings of EMNLP}, 2021. (CCF-B)
+    \item \textbf{Your Name}, First Author. ``Xxxxxx Xxxxxx Xxxxxx Xxxxxx Xxxxxx.'' \textit{Proceedings of ICML}, 2020. (CCF-A)
+  \end{cvnumlist}
+\end{cvsection}
+
+\begin{cvsection}{Skills}
+  \textbf{Programming Languages}: {\CodeFont{Python}} (Expert), {\CodeFont{C++}} (Proficient) \\
+  \textbf{Machine Learning}: PyTorch, TensorFlow, Scikit-learn, XGBoost, Transformers \\
+  \textbf{Big Data \& Infrastructure}: Apache Spark, Hadoop, Kubernetes, Docker, AWS, GCP, Distributed Systems \\
+  \textbf{Languages}: English (Fluent), Chinese (Native), French (Basic)
+\end{cvsection}
+
+\begin{cvsection}{Awards\\and\\Honors}
+  \cvpair{Outstanding Academic Achievement Award}{2022}
+  \cvpair{Best Paper Award, Conference Name}{2021}
+  \cvpair{Graduate Student Research Fellowship}{2020}
+  \cvpair{Outstanding Student Leader Award, University Name}{2018, 2019, 2020}
+\end{cvsection}
+
+\end{cvtwocolumn}
+\end{document}

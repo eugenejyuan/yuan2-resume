@@ -1,0 +1,33 @@
+## LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+## PDF output (uncomment if you don't want to track generated PDFs)
+*.pdf
+
+## Editor backup files
+*.bak
+*.swp
+*~
+
+## IDE configuration files
+.vscode
+
+## macOS
+.DS_Store
+
+## Windows
+Thumbs.db
+
+## Fonts: ignore all except specified folders
+fonts/*
+!fonts/SourceSerif4/
+!fonts/SourceSerif4/**
+!fonts/EBGaramond/
+!fonts/EBGaramond/**
+!fonts/tex-gyre-cursor/
+!fonts/tex-gyre-cursor/**
