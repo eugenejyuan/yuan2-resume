@@ -1,20 +1,60 @@
-# Yuan² Resume (Yuan-Squared)
+<h1 align="center">Yuan² Resume (Yuan-Squared)</h1>
 
-> Created by Yuan, Refined by Yuan.
-> Originally by [Yuanhf](https://github.com/xyz-yuanhf/yuan-resume).
+<p align="center">
+  <em>A clean two-column LaTeX resume template with precise alignment and modern typography.</em>
+</p>
 
-**Version:** 0.1.0
+<p align="center">
+  <a href="https://github.com/eugenejyuan/yuan2-resume">
+    <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue?cacheSeconds=300">
+  </a>
+  <a href="https://www.latex-project.org/">
+    <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-XeLaTeX-green?cacheSeconds=300">
+  </a>
+  <a href="https://github.com/eugenejyuan/yuan2-resume/blob/main/LICENSE">
+    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green">
+  </a>
+</p>
 
-An elegant academic resume template with two-column layout, optimized alignment, and flexible font configuration. This template is based on the classic [yuan-resume](https://github.com/xyz-yuanhf/yuan-resume) project, featuring a modern refactor with improved typography and customization options.
+> Originally created by [Yuanhf](https://github.com/xyz-yuanhf/yuan-resume), modernized and refactored by Jing Yuan.
+> The name “Yuan²” (Yuan-Squared) reflects a refined evolution of the original Yuan resume template.
+
+An elegant LaTeX resume template featuring **a clean two-column layout**, precise alignment, and flexible font configuration.
+
+Yuan² Resume is a modern refactor of the classic `yuan-resume` project, redesigned with improved typography, modular structure, and better customization support.
+It works well for academic, research, and technical resumes across both academia and industry.
+
+| Default Fonts (Open source) | Commercial Fonts |
+|----------|----------|
+| ![Default Fonts](assets/font-default.png) | ![Commercial Fonts](assets/font-commercial.png) |
+
+<p align="center">
+  <em>Two font configurations included: fully open-source by default, with optional commercial typography.</em>
+</p>
+
+<details>
+<summary><strong>📑 Table of Contents</strong></summary>
+
+<br>
+
+- [Quick Start](#quick-start)
+- [Font Configuration](#font-configuration)
+- [Usage](#usage)
+- [Compilation](#compilation)
+- [Project Structure](#project-structure)
+- [License](#license)
+- [Credits](#credits)
+- [Contributing](#contributing)
+
+</details>
+
+<p align="center">· · ·</p>
 
 ## Quick Start
 
 1. **Clone or download** this repository
 2. **Edit** `main.tex` with your information
-3. **Compile** with XeLaTeX:
-   ```bash
-   xelatex main.tex
-   ```
+3. **Compile** with XeLaTeX: `xelatex main.tex`
 
 ### Online Editing
 
@@ -40,13 +80,6 @@ To switch between font sets, modify the `fontset` option in `main.tex`:
 % For commercial fonts (requires font files)
 \documentclass[fontset=commercial]{yuan2resume}
 ```
-
-### Font Set Previews
-
-| Font Set | Preview |
-|----------|---------|
-| **Default** (Open-source) | ![Default Fonts](assets/font-default.png) |
-| **Commercial** | ![Commercial Fonts](assets/font-commercial.png) |
 
 ### Default Font Set (Open-source)
 
@@ -87,46 +120,6 @@ fonts/
 ```
 
 The template will automatically detect font files with `.otf`, `.ttf`, `.OTF`, or `.TTF` extensions. After placing the fonts in the correct directories, change the `fontset` option to `commercial` in `main.tex` and recompile.
-
-## Project Structure
-
-```
-yuan2-resume/
-│
-├── main.tex                    # Main entry file (edit this)
-├── yuan2resume.cls             # Core document class
-│
-├── configs/
-│   ├── fonts-default.tex       # Open-source font configuration
-│   └── fonts-commercial.tex    # Commercial font configuration
-│
-├── fonts/                      # Font files directory
-│   ├── SourceSerif4/           # Included (open-source)
-│   │   ├── SourceSerif4-Regular.otf
-│   │   ├── SourceSerif4-Bold.otf
-│   │   ├── SourceSerif4-It.otf
-│   │   ├── SourceSerif4-BoldIt.otf
-│   │   └── LICENSE.md
-│   ├── EBGaramond/             # Included (open-source)
-│   │   ├── EBGaramond-Regular.ttf
-│   │   └── OFL.txt
-│   ├── tex-gyre-cursor/        # Included (open-source)
-│   │   ├── tex-gyre-cursor-regular.otf
-│   │   └── COPYRIGHT.txt
-│   ├── SabonLTStd/             # User-provided (commercial, not in repo)
-│   ├── Calluna/                # User-provided (commercial, not in repo)
-│   ├── CronosProLT/            # User-provided (commercial, not in repo)
-│   └── CourierNew/             # User-provided (commercial, not in repo)
-│
-├── assets/
-│   ├── font-default.png        # Preview of default font set
-│   └── font-commercial.png     # Preview of commercial font set
-│
-├── LICENSE
-└── README.md                   # This file
-```
-
-**Note:** Commercial font files are not included in this repository due to licensing restrictions. You need to obtain and place them manually in the `fonts/` directory as described in the [Commercial Font Set](#commercial-font-set) section.
 
 ## Usage
 
@@ -188,6 +181,47 @@ xelatex main.tex
 - **Compilation errors**: Make sure you're using XeLaTeX, not pdfLaTeX
 - **Missing packages**: Install required LaTeX packages through your distribution's package manager
 
+## Project Structure
+
+```
+yuan2-resume/
+│
+├── main.tex                    # Main entry file (edit this)
+├── yuan2resume.cls             # Core document class
+│
+├── configs/
+│   ├── fonts-default.tex       # Open-source font configuration
+│   └── fonts-commercial.tex    # Commercial font configuration
+│
+├── fonts/                      # Font files directory
+│   ├── SourceSerif4/           # Included (open-source)
+│   │   ├── SourceSerif4-Regular.otf
+│   │   ├── SourceSerif4-Bold.otf
+│   │   ├── SourceSerif4-It.otf
+│   │   ├── SourceSerif4-BoldIt.otf
+│   │   └── LICENSE.md
+│   ├── EBGaramond/             # Included (open-source)
+│   │   ├── EBGaramond-Regular.ttf
+│   │   └── OFL.txt
+│   ├── tex-gyre-cursor/        # Included (open-source)
+│   │   ├── tex-gyre-cursor-regular.otf
+│   │   └── COPYRIGHT.txt
+│   ├── SabonLTStd/             # User-provided (commercial, not in repo)
+│   ├── Calluna/                # User-provided (commercial, not in repo)
+│   ├── CronosProLT/            # User-provided (commercial, not in repo)
+│   └── CourierNew/             # User-provided (commercial, not in repo)
+│
+├── assets/
+│   ├── font-default.png        # Preview of default font set
+│   └── font-commercial.png     # Preview of commercial font set
+│
+├── LICENSE
+└── README.md                   # This file
+```
+
+**Note:** Commercial font files are not included in this repository due to licensing restrictions. You need to obtain and place them manually in the `fonts/` directory as described in the [Commercial Font Set](#commercial-font-set) section.
+
+
 ## License
 
 This template is released under the **MIT License**. See [LICENSE](LICENSE) file for details. The original [yuan-resume](https://github.com/xyz-yuanhf/yuan-resume) project also uses the MIT License.
@@ -197,7 +231,7 @@ This template is released under the **MIT License**. See [LICENSE](LICENSE) file
 ## Credits
 
 - **Original template**: [yuan-resume](https://github.com/xyz-yuanhf/yuan-resume) by [Yuanhf](https://github.com/xyz-yuanhf)
-- **Inspired by**: Jian Xu's CV and Matty's Resume
+- **Inspired by**: [Jian Xu's CV](http://www.jianxu.net/en/files/JianXu_CV.pdf) and [Matty's Resume](https://github.com/mattyHerzig/mattys_resume)
 - **Refactored and enhanced**: 2025
 
 This project is a modern refactor of the original yuan-resume template, featuring improved font management, better code organization, and enhanced customization options.
