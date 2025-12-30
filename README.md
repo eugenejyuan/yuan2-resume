@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/eugenejyuan/yuan2-resume">
-    <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue?cacheSeconds=300">
+    <img alt="Version" src="https://img.shields.io/badge/version-0.2.0-blue?cacheSeconds=300">
   </a>
   <a href="https://www.latex-project.org/">
     <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-XeLaTeX-green?cacheSeconds=300">
@@ -79,6 +79,21 @@ To switch between font sets, modify the `fontset` option in `main.tex`:
 
 % For commercial fonts (requires font files)
 \documentclass[fontset=commercial]{yuan2resume}
+```
+
+### Page Footer (Optional)
+
+The class also supports a `pagefooter` boolean option to control whether a page footer is shown.
+
+- When enabled (default), the footer displays: `Name · current/total` (e.g., `Yuan Yuan · 2/3`).
+- When disabled, the document uses an empty page style (no header/footer).
+
+```latex
+% Enable footer (default)
+\documentclass[fontset=default,pagefooter=true]{yuan2resume}
+
+% Disable footer
+\documentclass[fontset=default,pagefooter=false]{yuan2resume}
 ```
 
 ### Default Font Set (Open-source)

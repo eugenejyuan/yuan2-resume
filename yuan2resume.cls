@@ -11,6 +11,9 @@
 % Declare fontset option with default value
 \DeclareStringOption[default]{fontset}
 
+% Declare pagefooter option with default value (true = enabled by default)
+\DeclareBoolOption[true]{pagefooter}
+
 % Process options: pass to article class and parse key-value pairs
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessKeyvalOptions*
@@ -173,6 +176,28 @@
 \def\YR@email{}
 \def\YR@homepage{}
 
+\RequirePackage{lastpage}
+
+% Page style: "Name · 2/3"
+\def\ps@YRPageFooter{%
+  \let\@oddhead\@empty
+  \let\@evenhead\@empty
+  \def\@oddfoot{%
+    \hfil\YR@name\ \textperiodcentered\ \thepage/\pageref{LastPage}\hfil
+  }%
+  \let\@evenfoot\@oddfoot
+}
+
+\newcommand{\YR@apply@pagestyle}{%
+  \ifYR@pagefooter
+    \pagestyle{YRPageFooter}\thispagestyle{YRPageFooter}%
+  \else
+    \pagestyle{empty}\thispagestyle{empty}%
+  \fi
+}
+
+\AtBeginDocument{\YR@apply@pagestyle}
+
 \newcommand{\name}[1]{\gdef\YR@name{#1}}
 \newcommand{\position}[1]{\gdef\YR@position{#1}}
 \newcommand{\phone}[1]{\gdef\YR@phone{#1}}
@@ -201,7 +226,7 @@
 }
 
 \renewcommand{\maketitle}{%
-  \thispagestyle{empty}%
+  \YR@apply@pagestyle%
   \begingroup
     \parindent=0pt
     \noindent
@@ -249,7 +274,7 @@
   \switchcolumn[1]%
   \par
 }{%
-  \par\addvspace{0.6\baselineskip}%
+  \par\addvspace{0.7\baselineskip}%
 }
 \makeatother
 
@@ -270,6 +295,7 @@
 \newlength{\cvlabelsep}      \setlength{\cvlabelsep}{0.4em}
 \newlength{\cvitemleftmargin}\setlength{\cvitemleftmargin}{1.2em}
 \newlength{\cvitemsep}       \setlength{\cvitemsep}{0.12\baselineskip}
+\newlength{\cvafterlist}     \setlength{\cvafterlist}{0.2\baselineskip}
 
 % ---- Bullet list ----
 \newlist{cvitemize}{itemize}{1}
@@ -282,11 +308,11 @@
   rightmargin=0pt,
   parsep=0pt,
   itemsep=\cvitemsep,
-  topsep=0.5pt,
+  topsep=\cvitemsep,
   partopsep=0pt,
   % Optional: make more compact by reducing itemsep
   before=\setlength{\emergencystretch}{3em},
-  after=\vspace{0.5\baselineskip}  % Add spacing after list
+  after=\vspace{\cvafterlist}  % Add spacing after list (more robust than \vspace)
 }
 
 % ---- Numbered list ----
@@ -305,8 +331,8 @@
   rightmargin=0pt,
   parsep=0pt,
   itemsep=\cvitemsep,
-  topsep=0.5pt,
+  topsep=\cvitemsep,
   partopsep=0pt,
   before=\setlength{\emergencystretch}{3em},%
-  after=\vspace{0.5\baselineskip}  % Add spacing after list
+  after=\vspace{\cvafterlist}  % Add spacing after list (more robust than \vspace)
 }

@@ -6,11 +6,15 @@
 % In local TeX: Use 'xelatex main.tex' instead of 'pdflatex main.tex'
 %
 % ====================================================================
-% Font Configuration
+% Class Options
 % ====================================================================
-% Supports both 'default' (open source) and 'commercial' font styles.
-% To switch, set the fontset option: [fontset=default] for open source fonts, [fontset=commercial] for commercial fonts (requires manual download).
-\documentclass[fontset=default]{yuan2resume}
+% - fontset: 'default' (open source) or 'commercial' (requires manual font files)
+%   Example: fontset=default or fontset=commercial
+%
+% - pagefooter: boolean (default: true)
+%   When enabled, shows a centered footer: "Name · current/total" (e.g., "Yuan Yuan · 2/3").
+%   Set pagefooter=false to hide header/footer entirely.
+\documentclass[fontset=default,pagefooter=false]{yuan2resume}
 
 \name{Yuan Yuan}
 \position{Ph.D. Candidate}
@@ -50,6 +54,7 @@
 \end{cvsection}
 
 \begin{cvsection}{Publications}
+  \vspace{-0.5\cvitemsep}
   \begin{cvnumlist}
     \item \textbf{Your Name}, Co-author. ``Xxxx Xxxx Xxxxxx Xx Xxx x Xxxx Xxxxx Xxxxx Xxxxxx.'' \textit{Proceedings of ACL}, 2023. (CCF-A)
     \item \textbf{Your Name}, First Author. ``Xxxx Xxx X Xxxx Xxxxx Xxxxxx Xxxxx Xxxxxx.'' \textit{Proceedings of NeurIPS}, 2022. (CCF-A)
@@ -64,6 +69,7 @@
   \textbf{Big Data \& Infrastructure}: Apache Spark, Hadoop, Kubernetes, Docker, AWS, GCP, Distributed Systems \\
   \textbf{Languages}: English (Fluent), Chinese (Native), French (Basic)
 \end{cvsection}
+\vspace{\cvafterlist}
 
 \begin{cvsection}{Awards\\and\\Honors}
   \cvpair{Outstanding Academic Achievement Award}{2022}
