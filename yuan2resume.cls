@@ -247,6 +247,10 @@
 % ====================================================================
 % CV sections and environments
 % ====================================================================
+\newlength{\cvsectiontopsep}     \setlength{\cvsectiontopsep}{0.1\baselineskip}
+\newlength{\cvsectionbottomsep}  \setlength{\cvsectionbottomsep}{1.0\baselineskip}
+\newlength{\cventrysep}          \setlength{\cventrysep}{0.3\baselineskip}
+
 \makeatletter
 % ---- Two-column CV environment ----
 \newenvironment{cvtwocolumn}[1][0.18]{%
@@ -268,13 +272,13 @@
 
 % ---- CV section environment ----
 \newenvironment{cvsection}[1]{%
-  \par\addvspace{0.1\baselineskip}%
+  \par\addvspace{\cvsectiontopsep}%
   \switchcolumn[0]*%
   \YR@leftheading{#1}%
   \switchcolumn[1]%
   \par
 }{%
-  \par\addvspace{0.7\baselineskip}%
+  \par\addvspace{\cvsectionbottomsep}%
 }
 \makeatother
 
@@ -295,7 +299,6 @@
 \newlength{\cvlabelsep}      \setlength{\cvlabelsep}{0.4em}
 \newlength{\cvitemleftmargin}\setlength{\cvitemleftmargin}{1.2em}
 \newlength{\cvitemsep}       \setlength{\cvitemsep}{0.12\baselineskip}
-\newlength{\cvafterlist}     \setlength{\cvafterlist}{0.2\baselineskip}
 
 % ---- Bullet list ----
 \newlist{cvitemize}{itemize}{1}
@@ -311,8 +314,7 @@
   topsep=\cvitemsep,
   partopsep=0pt,
   % Optional: make more compact by reducing itemsep
-  before=\setlength{\emergencystretch}{3em},
-  after=\vspace{\cvafterlist}  % Add spacing after list (more robust than \vspace)
+  before=\setlength{\emergencystretch}{3em},%
 }
 
 % ---- Numbered list ----
@@ -334,5 +336,4 @@
   topsep=\cvitemsep,
   partopsep=0pt,
   before=\setlength{\emergencystretch}{3em},%
-  after=\vspace{\cvafterlist}  % Add spacing after list (more robust than \vspace)
 }
