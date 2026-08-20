@@ -1,0 +1,94 @@
+% ---------------------------------------------------------------------------
+% Academic CV -- one composition of the grammar.
+%
+% Everything here is a SLOT, not a claim. Names, institutions, venues and
+% numbers are bracketed placeholders, and the bullets say what belongs in them,
+% so the file shows how the primitives compose without asserting anything about
+% a real person or organisation. Read it for shape; write content in main.tex.
+%
+% Compare examples/industry.tex: a different section list, the same seven
+% primitives, the same shared right-hand edge.
+%
+% Build from the REPOSITORY ROOT so the class and fonts/ resolve:
+%   latexmk -xelatex -outdir=build examples/academic.tex
+% ---------------------------------------------------------------------------
+\documentclass[fontset=commercial,pagefooter=false]{yuan2resume}
+
+\cvname{[Full Name]}
+\cvposition{[Ph.D. Candidate]}
+\cvcontactrow{
+  \cvcontact[\cvIconPhone]{[+00 0000 0000]}
+  \cvemail{name@example.edu}
+}
+\cvcontactrow{
+  \cvlink[\cvIconScholar]{https://example.edu/scholar}{Scholar}
+  \cvlink[\cvIconGitHub]{https://example.com/git}{git/handle}
+  \cvlink[\cvIconSite]{https://example.org}{example.org}
+}
+
+\begin{document}
+\maketitle
+
+\begin{cvtwocolumn}
+
+\begin{cvsection}{Education}
+  \cvpair{\textbf{[Doctoral Institution]}}{[City, Country]}
+  \cvpair{\textit{Ph.D. Candidate in [Field]}}{Sept. 2020 -- \textit{Present}}
+  \begin{cvitemize}
+    \item Advisor and research area, one clause each -- this is the line a reader
+      uses to place you, so it goes first.
+    \item A second line only when it earns the space: a distinction, a
+      fellowship, a thesis title.
+  \end{cvitemize}
+  \cvgap
+  \cvpair{\textbf{[Undergraduate Institution]}}{[City, Country]}
+  \cvpair{\textit{B.S. in [Field]}}{Sept. 2016 -- June 2020}
+  \begin{cvitemize}
+    \item One line at most. An older degree earns less space than a recent one.
+  \end{cvitemize}
+\end{cvsection}
+
+\begin{cvsection}{Publications}
+  \begin{cvnumlist}
+    \item \textbf{[Your Name]}, {[Co-author]}. ``[Title of the First Paper].''
+      \textit{[Venue]}, 2023.
+    \item \textbf{[Your Name]}, {[Co-author]}, {[Co-author]}. ``[Title of the
+      Second Paper, Long Enough That It Wraps to a Second Line].''
+      \textit{[Venue]}, 2022.
+    \item {[Co-author]}, \textbf{[Your Name]}. ``[Title of the Third Paper].''
+      \textit{[Venue]}, 2021.
+    \item \textbf{[Your Name]}, {[Co-author]}. ``[Title of the Fourth Paper].''
+      \textit{[Venue]}, 2020.
+  \end{cvnumlist}
+\end{cvsection}
+
+\begin{cvsection}{Research\\Experience}
+  \cvpair{\textbf{[Lab, Institute or Company]}}{[City, Country]}
+  \cvpair{\textbf{[Role]}, [Group or Team]}{2022 -- \textit{Present}}
+  \begin{cvitemize}
+    \item What you owned, in one line, with the scope made legible.
+  \end{cvitemize}
+  \begin{cventry}
+    \cvpair{\textit{[Project or Workstream]}}{2023 -- 2024}
+    \begin{cvitemize}
+      \item The result, and the number that makes it checkable.
+      \item A second line only when the project needs one. Note that the date
+        above still sits on the same right edge as every other date.
+    \end{cvitemize}
+  \end{cventry}
+\end{cvsection}
+
+\begin{cvsection}{Skills}
+  \textbf{Languages}: {\CodeFont{[Lang]}}, {\CodeFont{[Lang]}}, {\CodeFont{[Lang]}} \\
+  \textbf{Frameworks}: [Framework], [Framework], [Framework], [Framework] \\
+  \textbf{Spoken}: [Language] (native), [Language] (fluent), [Language] (basic)
+\end{cvsection}
+
+\begin{cvsection}{Awards\\and\\Honors}
+  \cvpair{[Award or Fellowship Name]}{2022}
+  \cvpair{[Award or Fellowship Name], [Awarding Body]}{2021}
+  \cvpair{[Award or Fellowship Name]}{2020}
+\end{cvsection}
+
+\end{cvtwocolumn}
+\end{document}

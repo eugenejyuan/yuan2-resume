@@ -1,81 +1,77 @@
-% ====================================================================
-% IMPORTANT: This template REQUIRES XeLaTeX compiler!
-% ====================================================================
-% 
-% In Overleaf: Menu -> Settings -> Compiler -> XeLaTeX
-% In local TeX: Use 'xelatex main.tex' instead of 'pdflatex main.tex'
+% ===========================================================================
+% Your resume. Replace every placeholder below, then delete this banner.
 %
-% ====================================================================
-% Class Options
-% ====================================================================
-% - fontset: 'default' (open source) or 'commercial' (requires manual font files)
-%   Example: fontset=default or fontset=commercial
+%   Requires XeLaTeX.  Overleaf: Menu -> Settings -> Compiler -> XeLaTeX
+%   Build:  latexmk -xelatex -outdir=build main.tex
+%   Check:  make check          (fails while placeholders remain)
 %
-% - pagefooter: boolean (default: true)
-%   When enabled, shows a centered footer: "Name · current/total" (e.g., "Yuan Yuan · 2/3").
-%   Set pagefooter=false to hide header/footer entirely.
-\documentclass[fontset=default,pagefooter=false]{yuan2resume}
+%   The vocabulary is seven primitives -- read docs/GRAMMAR.md before writing.
+%   examples/academic.tex and examples/industry.tex are two full compositions;
+%   neither is "the" shape of a resume. Invent the sections you actually need.
+%
+%   Class options:
+%     fontset    = commercial (included config) | your own set -- docs/FONTS.md
+%     pagefooter = false | true  ("Name . 2/3" centred at the foot)
+% ===========================================================================
+\documentclass[fontset=commercial,pagefooter=false]{yuan2resume}
 
-\name{Yuan Yuan}
-\position{Ph.D. Candidate}
-\phone{(+86) 1111-2222-3333}
-\email{xxxx@xxxx.com}
-\homepage{https://xxxx.github.io}
+\cvname{Your Name}
+\cvposition{Your Job Title}
+
+% The contact block. Items print in declaration order, so to reorder them you
+% reorder these lines; to move an item to the other row, move its line into
+% the other \cvcontactrow. Every item must be inside an explicit row.
+% Icons are semantic slots (\cvIconPhone, \cvIconScholar, ...), so you never
+% name a glyph here -- and icons=false in the class options drops them all.
+\cvcontactrow{
+  \cvcontact[\cvIconPhone]{+1 (234) 567-8900}
+  \cvemail{your.email@example.com}
+}
+\cvcontactrow{
+  \cvlink[\cvIconScholar]{https://scholar.google.com/citations?user=XXXX}{Scholar}
+  \cvlink[\cvIconGitHub]{https://github.com/you}{github.com/you}
+  \cvlink[\cvIconSite]{https://example.com}{example.com}
+}
+% Other slots: \cvIconLinkedIn, \cvIconLocation, or pass any fontawesome5
+% command directly -- \cvlink[\faTwitter]{...}{...}
 
 \begin{document}
 \maketitle
 
 \begin{cvtwocolumn}
 
-\begin{cvsection}{Professional Experience}
-  \cvpair{\textbf{ByteDance Ltd. }}{Shanghai, China}
-  \cvpair{\textbf{Research Scientist}, AI for Science Group}{2022 -- \textit{Present}}
+\begin{cvsection}{Experience}
+  \cvpair{\textbf{Employer Name}}{City, Country}
+  \cvpair{\textbf{Your Job Title}, Team}{2022 -- \textit{Present}}
   \begin{cvitemize}
-    \item Developed and implemented machine learning models for research projects, contributing to multiple publications
-    \item Built scalable training infrastructure and optimized model performance using modern deep learning frameworks
-    \item Collaborated with cross-functional teams to deploy research prototypes into production systems
+    \item What you owned, and the number that shows it mattered.
+  \end{cvitemize}
+  % cventry nests a project under the role. It indents from the left only, so
+  % the date below still lands on the same right edge as "City, Country".
+  \begin{cventry}
+    \cvpair{\textit{Project Name}}{2023 -- 2024}
+    \begin{cvitemize}
+      \item What changed, measured.
+    \end{cvitemize}
+  \end{cventry}
+
+  \cvgap  % <- separates sibling entries. Never write \vspace here.
+
+  \cvpair{\textbf{Earlier Employer}}{City, Country}
+  \cvpair{\textbf{Earlier Title}}{2019 -- 2022}
+  \begin{cvitemize}
+    \item One line per thing worth an interview question.
   \end{cvitemize}
 \end{cvsection}
 
 \begin{cvsection}{Education}
-  \cvpair{\textbf{University of California, Berkeley}}{Berkeley, CA}
-  \cvpair{\textit{Ph.D. Candidate in Computer Science}}{Sept. 2020 -- \textit{Present}}
-  \begin{cvitemize}
-    \item Advisor: Prof. Alan Turing
-    \item Research Area: Large Language Models, Efficient Inference, Distributed Systems.
-    \item GPA: 3.96/4.0 (Rank: Top 1\%).
-  \end{cvitemize}
-  \vspace{\cventrysep}
-  \cvpair{\textbf{Tsinghua University}}{Beijing, China}
-  \cvpair{\textit{B.S. in Electrical Engineering and Computer Sciences (EECS)}}{Sept. 2016 -- June 2020}
-  \begin{cvitemize}
-    \item Graduated with High Distinction (Magna Cum Laude).
-    \item Selected Coursework: Operating Systems (A+), Convex Optimization (A).
-  \end{cvitemize}
-\end{cvsection}
-
-\begin{cvsection}{Publications}
-  \vspace{-0.5\cvitemsep}
-  \begin{cvnumlist}
-    \item \textbf{Your Name}, Co-author. ``Xxxx Xxxx Xxxxxx Xx Xxx x Xxxx Xxxxx Xxxxx Xxxxxx.'' \textit{Proceedings of ACL}, 2023. (CCF-A)
-    \item \textbf{Your Name}, First Author. ``Xxxx Xxx X Xxxx Xxxxx Xxxxxx Xxxxx Xxxxxx.'' \textit{Proceedings of NeurIPS}, 2022. (CCF-A)
-    \item \textbf{Your Name}, Co-author. ``Xxx Xxxxxx Xxxxxx Xxxxx Xxxxxx Xxxxxx.'' \textit{Proceedings of EMNLP}, 2021. (CCF-B)
-    \item \textbf{Your Name}, First Author. ``Xxxxxx Xxxxxx Xxxxxx Xxxxxx Xxxxxx.'' \textit{Proceedings of ICML}, 2020. (CCF-A)
-  \end{cvnumlist}
+  \cvpair{\textbf{University Name}}{City, Country}
+  \cvpair{\textit{Your Degree}}{2015 -- 2019}
 \end{cvsection}
 
 \begin{cvsection}{Skills}
-  \textbf{Programming Languages}: {\CodeFont{Python}}, {\CodeFont{C++}}, {\CodeFont{Java}}, {\CodeFont{Rust}} \\
-  \textbf{Machine Learning}: PyTorch, TensorFlow, Scikit-learn, XGBoost, Transformers \\
-  \textbf{Big Data \& Infrastructure}: Apache Spark, Hadoop, Kubernetes, Docker, AWS, GCP, Distributed Systems \\
-  \textbf{Languages}: English (Fluent), Chinese (Native), French (Basic)
-\end{cvsection}
-
-\begin{cvsection}{Awards\\and\\Honors}
-  \cvpair{Outstanding Academic Achievement Award}{2022}
-  \cvpair{Best Paper Award, Conference Name}{2021}
-  \cvpair{Graduate Student Research Fellowship}{2020}
-  \cvpair{Outstanding Student Leader Award, University Name}{2018, 2019, 2020}
+  \textbf{Languages}: {\CodeFont{Python}}, {\CodeFont{Go}} \\
+  \textbf{Tools}: name only what you would defend in an interview
 \end{cvsection}
 
 \end{cvtwocolumn}

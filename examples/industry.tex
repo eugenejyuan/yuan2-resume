@@ -1,0 +1,89 @@
+% ---------------------------------------------------------------------------
+% Industry resume -- a DIFFERENT composition of the same grammar.
+%
+% No Publications section; Open Source and Speaking instead; projects nested
+% under each role with cventry. Same seven primitives, same six invariants,
+% same right-hand edge as examples/academic.tex.
+%
+% Everything here is a SLOT, not a claim: employers, projects, venues and
+% numbers are bracketed placeholders, and the bullets say what belongs in them.
+% Read it for shape; write content in main.tex.
+%
+% Build from the REPOSITORY ROOT so the class and fonts/ resolve:
+%   latexmk -xelatex -outdir=build examples/industry.tex
+% ---------------------------------------------------------------------------
+\documentclass[fontset=commercial,pagefooter=false]{yuan2resume}
+
+\cvname{[Full Name]}
+\cvposition{[Job Title]}
+\cvcontactrow{
+  \cvcontact[\cvIconLocation]{[City, Country]}
+  \cvemail{name@example.com}
+}
+\cvcontactrow{
+  \cvlink[\cvIconGitHub]{https://example.com/git}{git/handle}
+  \cvlink[\cvIconLinkedIn]{https://example.com/in}{in/handle}
+}
+
+\begin{document}
+\maketitle
+
+\begin{cvtwocolumn}
+
+\begin{cvsection}{Experience}
+  \cvpair{\textbf{[Current Employer]}}{[City, Country]}
+  \cvpair{\textbf{[Role]}, [Team]}{2021 -- \textit{Present}}
+  \begin{cvitemize}
+    \item What you own, in one line, with the number that makes the scope legible.
+  \end{cvitemize}
+  \begin{cventry}
+    \cvpair{\textit{[Project or Workstream]}}{2023 -- 2024}
+    \begin{cvitemize}
+      \item The outcome, stated as a change: from what, to what.
+      \item A second line only when the project needs one.
+    \end{cvitemize}
+  \end{cventry}
+  \begin{cventry}
+    \cvpair{\textit{[Second Project]}}{2022}
+    \begin{cvitemize}
+      \item One line. Two sibling cventry blocks share one nested left edge.
+    \end{cvitemize}
+  \end{cventry}
+  \cvgap
+  \cvpair{\textbf{[Previous Employer]}}{[City, Country]}
+  \cvpair{\textbf{[Role]}, [Team]}{2018 -- 2021}
+  \begin{cvitemize}
+    \item What you built, and what it carried.
+    \item People, if you led any -- how many, and what became of them.
+  \end{cvitemize}
+\end{cvsection}
+
+\begin{cvsection}{Open\\Source}
+  \cvpair{\textbf{[project-name]} --- [one clause: what it is, in what language]}{[role]}
+  \begin{cvitemize}
+    \item Scale and duration: since when, how many contributors, release cadence.
+  \end{cvitemize}
+  \cvgap
+  \cvpair{\textbf{[project-name]} --- [one clause: what it is]}{[role]}
+  \begin{cvitemize}
+    \item What you landed, and what it changed.
+  \end{cvitemize}
+\end{cvsection}
+
+\begin{cvsection}{Speaking}
+  \cvpair{``[Title of the Talk]'', [Conference]}{2024}
+  \cvpair{``[Title of the Talk]'', [Conference]}{2022}
+\end{cvsection}
+
+\begin{cvsection}{Stack}
+  \textbf{Daily}: {\CodeFont{[Lang]}}, {\CodeFont{[Lang]}}, {\CodeFont{[Lang]}} \\
+  \textbf{Infrastructure}: [Tool], [Tool], [Tool], [Tool], [Tool] \\
+  \textbf{Practices}: [practice], [practice], [practice]
+\end{cvsection}
+
+\begin{cvsection}{Education}
+  \cvpair{\textbf{[Institution]} --- B.Eng. in [Field]}{2014 -- 2018}
+\end{cvsection}
+
+\end{cvtwocolumn}
+\end{document}
