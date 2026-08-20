@@ -23,11 +23,7 @@
 ## Windows
 Thumbs.db
 
-## Fonts: ignore all except specified folders
+## Font binaries are downloaded locally; keep only their installer and docs
 fonts/*
-!fonts/SourceSerif4/
-!fonts/SourceSerif4/**
-!fonts/EBGaramond/
-!fonts/EBGaramond/**
-!fonts/tex-gyre-cursor/
-!fonts/tex-gyre-cursor/**
+!fonts/README.md
+!fonts/download.sh
