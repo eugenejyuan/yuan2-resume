@@ -1,9 +1,34 @@
-\ProvidesFile{fonts-commercial.tex}[Commercial Font Setup]
+\ProvidesFile{fonts-commercial.tex}[Commercial Font Configuration]
 
-\defaultfontfeatures{Ligatures = TeX}
+\defaultfontfeatures{Ligatures=TeX}
 
-\YR@SetMainFontFile[fonts/SabonLTStd/]{SabonLTStd}{-Regular}[-Bold][-Italic][-BoldItalic]
+\cvrequirefont{fonts/SabonLTStd/SabonLTStd-Regular.ttf}
+\setmainfont{SabonLTStd}[
+  Path=fonts/SabonLTStd/,
+  Extension=.ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Italic,
+  BoldItalicFont=*-BoldItalic
+]
 
-\YR@TryLocalFontFile[fonts/Calluna/]{TitleFont}{Calluna}{-Regular}
-\YR@TryLocalFontFile[fonts/CronosProLT/]{SectionFont}{CronosProLT}{-Regular}
-\YR@TryLocalFontFile[fonts/CourierNew/]{CodeFont}{CourierNew}{-Regular}
+\cvrequirefont{fonts/Calluna/Calluna-Regular.otf}
+\newfontfamily\TitleFont{Calluna}[
+  Path=fonts/Calluna/,
+  Extension=.otf,
+  UprightFont=*-Regular
+]
+
+\cvrequirefont{fonts/CronosProLT/CronosProLT-Regular.ttf}
+\newfontfamily\SectionFont{CronosProLT}[
+  Path=fonts/CronosProLT/,
+  Extension=.ttf,
+  UprightFont=*-Regular
+]
+
+\cvrequirefont{fonts/CourierNew/CourierNew-Regular.ttf}
+\newfontfamily\CodeFont{CourierNew}[
+  Path=fonts/CourierNew/,
+  Extension=.ttf,
+  UprightFont=*-Regular
+]
