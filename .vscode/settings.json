@@ -1,0 +1,24 @@
+{
+  // The class, configs/ and every Path=fonts/... resolve against the COMPILER'S
+  // working directory, not against the .tex file. So every build must run from
+  // the repository root -- otherwise examples/*.tex cannot find yuan2resume.cls.
+  "latex-workshop.latex.tools": [
+    {
+      "name": "xelatex-from-root",
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "cd '%WORKSPACE_FOLDER%' && latexmk -xelatex -synctex=1 -interaction=nonstopmode -outdir=build '%DOC%.tex'"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "xelatex",
+      "tools": ["xelatex-from-root"]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "xelatex",
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
+  "latex-workshop.latex.autoClean.onbuilt": false
+}

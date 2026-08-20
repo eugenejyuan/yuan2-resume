@@ -1,3 +1,6 @@
+## Build output
+build/
+
 ## LaTeX auxiliary files
 *.aux
 *.log
@@ -15,7 +18,10 @@
 *~
 
 ## IDE configuration files
-.vscode
+## The LaTeX Workshop recipe is shared -- every build must run from the repository
+## root, and a fresh clone cannot know that. Everything else under .vscode is local.
+.vscode/*
+!.vscode/settings.json
 
 ## macOS
 .DS_Store
