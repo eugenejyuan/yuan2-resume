@@ -11,7 +11,10 @@ bracketed placeholder: they show structure and assert nothing about anyone.
 1. **Get the material.** Content comes from the person: an old CV, a LinkedIn export,
    notes, answers to your questions. Never invent a fact, a date or a number; ask. No
    check can catch a fabricated line.
-2. **`make fonts`**, once after cloning.
+2. **Set up.** If `xelatex`, `latexmk` or `gs` is missing, install it with the person's
+   OK, since it is large: TeX Live or MacTeX; on Debian/Ubuntu,
+   `apt install texlive-xetex latexmk texlive-latex-extra texlive-fonts-recommended
+   texlive-fonts-extra ghostscript`. Then `make fonts`, once.
 3. **Read [`docs/GRAMMAR.md`](docs/GRAMMAR.md).** It is the whole vocabulary: what
    nests in what, which primitive fits which content, the defaults and the knobs.
 4. **Write `main.tex`**, the only file you edit. Build the sections this person's
@@ -20,6 +23,12 @@ bracketed placeholder: they show structure and assert nothing about anyone.
 6. **`make png`, and look at every page.** Every right-hand value of `\cvpair` sits
    flush against the right margin, every heading sits in the left rail, and no page is
    less than a third full. No script can check whether a page reads well.
+7. **Hand it over.** The résumé is `build/main.pdf`; open it for the person. In VS Code
+   (`$TERM_PROGRAM` is `vscode`), install LaTeX Workshop if it is missing
+   (`code --install-extension James-Yu.latex-workshop`), then `code build/main.pdf`:
+   the tab reloads on every rebuild, so do this once. Elsewhere use `open` or
+   `xdg-open`; where you cannot open anything on their screen, attach the PDF or show
+   the page PNGs. Then name anything you left out because they did not confirm it.
 
 ## When the page is wrong
 
