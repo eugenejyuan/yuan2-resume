@@ -76,6 +76,15 @@ else
   bad "placeholder comments are ignored (see $OUT/comment-scan.stdout)"
 fi
 
+if OUT="$CHECK_OUT" scripts/check.sh tests/fail-check-bypass.tex \
+  >"$OUT/bypass-scan.stdout" 2>&1; then
+  bad "hand alignment fails check (unexpected success)"
+elif grep -E '^  FAIL +no hand spacing' "$OUT/bypass-scan.stdout" >/dev/null; then
+  ok "hand alignment fails check"
+else
+  bad "hand alignment fails check (wrong failure; see $OUT/bypass-scan.stdout)"
+fi
+
 echo
 if [ "$fails" -eq 0 ]; then
   echo "  PASS  class contract"

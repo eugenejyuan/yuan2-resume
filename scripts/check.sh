@@ -65,25 +65,30 @@ else
   bad "page count <= $PAGES" "$pages -- cut prose, do not shrink spacing"
 fi
 
-# --- 6. content never hardcodes vertical space -----------------------------
-# The rule is checkable by SHAPE because \cvgap exists: there is no legitimate
-# \vspace in a content file any more, not even \vspace{\cventrysep}.
+# --- 6. content never spaces, sizes or aligns by hand ----------------------
+# Checkable by SHAPE: each command below has a primitive or a preamble knob that
+# does its job (docs/GRAMMAR.md), so none has a legitimate use in a content file
+# -- not even \vspace{\cventrysep}, which is what \cvgap is for.
 uncommented() { sed 's/^[[:space:]]*%.*//; s/\([^\\]\)%.*/\1/' "$1"; }
-n=$(uncommented "$TARGET" | grep -c '\\vspace')
-if [ "$n" = 0 ]; then
-  ok "no \\vspace in content"
+bypass='\\(vspace|vskip|bigskip|medskip|smallskip|hspace|hskip|hfill?|leftskip'
+bypass="$bypass"'|(sub)*section|newpage|clearpage|pagebreak|footnote|linespread|geometry|newgeometry'
+bypass="$bypass"'|fontsize|tiny|scriptsize|footnotesize|small|large|Large|LARGE|huge|Huge)([^A-Za-z]|$)'
+bypass="$bypass"'|\\\\\[|\\begin\{(itemize|enumerate|tabular|tabularx|minipage|figure|table)\}'
+hits=$(uncommented "$TARGET" | grep -nE "$bypass" | head -5)
+if [ -z "$hits" ]; then
+  ok "no hand spacing, sizing or alignment"
 else
-  bad "no \\vspace in content" "$n line(s); use \\cvgap"
+  bad "no hand spacing, sizing or alignment" "use a primitive (docs/GRAMMAR.md):"
+  printf '%s\n' "$hits" | sed 's/^/           /'
 fi
 
 # --- 7. no placeholder survived -------------------------------------------
-# This list mirrors the placeholders actually present in main.tex; change one
-# there and change it here. Skipped for examples/: demonstrations, not
-# deliverables.
+# This list mirrors the field placeholders in main.tex; change one there and
+# change it here. Skipped for examples/: demonstrations, not deliverables.
 case "$TARGET" in
   examples/*) warn "placeholder scan" "skipped (example file)" ;;
   *)
-    hits=$(uncommented "$TARGET" | grep -nE 'Your Name|Your Job Title|Your Degree|Employer Name|University Name|example\.com|github\.com/you|citations\?user=XXXX' | head -5)
+    hits=$(uncommented "$TARGET" | grep -nE 'Your Name|Your Job Title|Your Degree|Employer Name|Earlier Employer|Earlier Title|University Name|Project Name|City, Country|567-8900|example\.com|github\.com/you|citations\?user=XXXX' | head -5)
     if [ -n "$hits" ]; then
       bad "no placeholder text" "still template boilerplate:"
       printf '%s\n' "$hits" | sed 's/^/           /'

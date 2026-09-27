@@ -59,6 +59,17 @@ they show the shape without inventing a person.
 **Read [`docs/GRAMMAR.md`](docs/GRAMMAR.md) before writing content.** It is short, and it
 is the whole design.
 
+## With a coding agent
+
+Open the repository in any agent that reads [`AGENTS.md`](AGENTS.md) (Claude Code, Codex,
+Cursor, …), and give it one sentence and your material:
+
+> Build my résumé with this template. My current CV is `<file, link or pasted text>`.
+
+`AGENTS.md` gives the agent the workflow, [`docs/GRAMMAR.md`](docs/GRAMMAR.md) the
+vocabulary, and `make check` tells it when it is done. It is told to ask for anything
+your material does not say, never to invent it.
+
 ## Quick start
 
 You need XeLaTeX from TeX Live, MiKTeX or MacTeX, plus `curl` for the one-time font
@@ -86,14 +97,14 @@ the placeholders**. That is the intended signal, and it tells an agent exactly w
   ok     no overfull hbox
   ok     page count <= 1                          1
   FAIL   no placeholder text                      still template boilerplate:
-           18:\cvname{Your Name}
+           19:\cvname{Your Name}
 ```
 
 ## Documentation
 
 | | |
 |---|---|
-| [`docs/GRAMMAR.md`](docs/GRAMMAR.md) | The primitives, the six invariants, identity, tuning knobs, what breaks. Read first. |
+| [`docs/GRAMMAR.md`](docs/GRAMMAR.md) | What nests in what, which primitive fits which content, the six invariants, defaults and knobs. Read first. |
 | [`docs/FONTS.md`](docs/FONTS.md) | The four font slots, installing the commercial set, adding your own. |
 | [`docs/DESIGN.md`](docs/DESIGN.md) | Why each invariant holds, and the measurements behind it. Optional. |
 | [`AGENTS.md`](AGENTS.md) | Working agreement for coding agents: workflow, definition of done, hard rules. |
