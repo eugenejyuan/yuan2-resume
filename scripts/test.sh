@@ -76,6 +76,18 @@ else
   bad "placeholder comments are ignored (see $OUT/comment-scan.stdout)"
 fi
 
+# Builds cleanly, but make check must reject the hand alignment.
+printf '%s\n' '\documentclass[icons=false]{yuan2resume}' '\begin{document}' \
+  'Hand-aligned \hfill 2024' '\end{document}' >"$OUT/bypass.tex"
+if OUT="$CHECK_OUT" scripts/check.sh "$OUT/bypass.tex" \
+  >"$OUT/bypass-scan.stdout" 2>&1; then
+  bad "hand alignment fails check (unexpected success)"
+elif grep -E '^  FAIL +no hand spacing' "$OUT/bypass-scan.stdout" >/dev/null; then
+  ok "hand alignment fails check"
+else
+  bad "hand alignment fails check (wrong failure; see $OUT/bypass-scan.stdout)"
+fi
+
 echo
 if [ "$fails" -eq 0 ]; then
   echo "  PASS  class contract"

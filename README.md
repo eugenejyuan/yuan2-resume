@@ -26,88 +26,55 @@
   </tr>
 </table>
 
-## The idea
+## Use it
 
-Most resume templates are forms: they define a fixed set of sections and you fill in the
-blanks. This one defines **seven composable primitives and six invariants**. Any
-arrangement that preserves the invariants comes out correctly aligned — including
-arrangements nobody has tried yet.
+Open this folder in a coding agent (Claude Code, Codex, Cursor, or agent mode in
+VS Code), attach your current CV, and say:
 
-```latex
-\begin{cvtwocolumn}[<ratio>]   % container; label rail defaults to 0.18
-\begin{cvsection}{<heading>}   % one row of the grammar: label left, content right
-\cvpair{<left>}{<right>}       % full-width line, right cell flush right
-\cvgap[<n>]                    % one unit of separation between sibling entries
-\begin{cventry}[<indent>]      % nested sub-unit; indents from the left only
-\begin{cvitemize}              % bullet list
-\begin{cvnumlist}              % numbered list, digit-aligned
+```text
+Build my résumé with this template from the attached CV. Follow AGENTS.md,
+and open the PDF for me when it passes make check.
 ```
 
-That is the entire vocabulary. Every date and location lands on **one** shared right
-edge, at any nesting depth, because `\cvpair` is the only thing allowed to align left
-against right. Every vertical gap is a multiple of `\baselineskip`, because `\cvgap` is
-the only way content can add space at all.
+The agent installs what is missing, asks you for anything your CV does not say instead
+of inventing it, and stops only when `make check` passes and it has looked at every
+page. Then it opens `build/main.pdf`; in VS Code, that is a preview tab that reloads on
+every rebuild. Later changes are one sentence too: *"fit this on one page"*, *"add my
+ORCID"*.
 
-So the question is never “which section type do I use?” but “which primitives compose
-into the shape this person’s history actually has?”
-[`examples/academic.tex`](examples/academic.tex) and
-[`examples/industry.tex`](examples/industry.tex) are two answers — one with Publications
-and Awards, one with Open Source and Speaking. Neither is *the* shape of a resume. Both
-are placeholder skeletons: every name, employer, venue and number is a bracketed slot, so
-they show the shape without inventing a person.
+## By hand
 
-**Read [`docs/GRAMMAR.md`](docs/GRAMMAR.md) before writing content.** It is short, and it
-is the whole design.
-
-## Quick start
-
-You need XeLaTeX from TeX Live, MiKTeX or MacTeX, plus `curl` for the one-time font
-download. Font binaries are not committed, so install the pinned files from the
-original template before the first build:
+You need XeLaTeX (TeX Live or MacTeX) and `curl`.
 
 ```bash
-make fonts    # download and verify the commercial fonts (run this first)
-make          # build main.tex into build/
-make check    # definition of done -- non-zero exit if the resume is not shippable
-make test     # exercise the class contract, including expected failures
-make examples # build and check both example compositions
-make png      # render every page, so you can actually look at it
+make fonts   # once: download and verify the fonts
+make         # build main.tex into build/main.pdf
+make check   # exits non-zero until the résumé is shippable
 ```
 
-For Overleaf, run `make fonts` locally, upload the resulting project directory, and set
-Menu → Settings → Compiler → **XeLaTeX**. A direct GitHub import will not contain the
-Git-ignored font files. See [`fonts/README.md`](fonts/README.md) for source, checksums,
-directory layout, and licensing notes.
+**VS Code:** install [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
+This repository's settings build on save; <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd>
+(<kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>V</kbd>) opens the preview. **Overleaf:** run
+`make fonts` locally, upload the folder (a GitHub import lacks the fonts), and set the
+compiler to XeLaTeX.
 
-`main.tex` ships as a skeleton, so a fresh clone **fails `make check` until you replace
-the placeholders**. That is the intended signal, and it tells an agent exactly what to do:
+## How it works
 
-```
-  ok     no overfull hbox
-  ok     page count <= 1                          1
-  FAIL   no placeholder text                      still template boilerplate:
-           18:\cvname{Your Name}
-```
+Most résumé templates are forms. This one is seven primitives that compose freely,
+shown above: `\cvpair` is the only thing that aligns left against right, so every date
+lands on one right edge at any depth; `\cvgap` is the only way to add space, so the
+rhythm never drifts. `main.tex` is a skeleton, not the required shape, and
+[`examples/`](examples) holds two compositions that share no section list.
 
-## Documentation
+[`docs/GRAMMAR.md`](docs/GRAMMAR.md) is the whole vocabulary: read it before writing.
+[`docs/FONTS.md`](docs/FONTS.md) covers fonts, [`docs/DESIGN.md`](docs/DESIGN.md) why
+the layout holds.
 
-| | |
-|---|---|
-| [`docs/GRAMMAR.md`](docs/GRAMMAR.md) | The primitives, the six invariants, identity, tuning knobs, what breaks. Read first. |
-| [`docs/FONTS.md`](docs/FONTS.md) | The four font slots, installing the commercial set, adding your own. |
-| [`docs/DESIGN.md`](docs/DESIGN.md) | Why each invariant holds, and the measurements behind it. Optional. |
-| [`AGENTS.md`](AGENTS.md) | Working agreement for coding agents: workflow, definition of done, hard rules. |
+## License and credits
 
-## License
-
-MIT, as is the original [yuan-resume](https://github.com/xyz-yuanhf/yuan-resume).
-Font binaries are not included in this repository and are not covered by its MIT
-License; check the applicable font licences before downloading or using them.
-
-## Credits
-
-Original template [yuan-resume](https://github.com/xyz-yuanhf/yuan-resume) by
-[Yuanhf](https://github.com/xyz-yuanhf). Inspired by
+MIT, as is the original [yuan-resume](https://github.com/xyz-yuanhf/yuan-resume) by
+[Yuanhf](https://github.com/xyz-yuanhf). Font binaries are not in this repository and
+not covered by its licence; check theirs before downloading or using them. Inspired by
 [Jian Xu’s CV](http://www.jianxu.net/en/files/JianXu_CV.pdf) and
-[Matty’s Resume](https://github.com/mattyHerzig/mattys_resume).
-Thanks to the type designers who make good typography freely available.
+[Matty’s Resume](https://github.com/mattyHerzig/mattys_resume). Thanks to the type
+designers who make good typography freely available.

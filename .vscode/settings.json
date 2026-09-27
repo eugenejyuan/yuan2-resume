@@ -19,6 +19,10 @@
     }
   ],
   "latex-workshop.latex.recipe.default": "xelatex",
+  // Build on save, not on every change on disk: an agent that writes main.tex and
+  // runs make check would otherwise race this build into the same build/. The
+  // preview still reloads whenever the PDF changes, whoever built it.
+  "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
   "latex-workshop.latex.autoClean.onbuilt": false
 }

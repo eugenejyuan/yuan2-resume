@@ -49,7 +49,9 @@ content file" is now a grep, not an argument:
 grep -n '\\vspace' main.tex     # must print nothing
 ```
 
-`scripts/check.sh` runs exactly that, after stripping comments.
+`scripts/check.sh` runs that, after stripping comments, together with the same check
+for every other command that spaces, sizes or aligns by hand (`\hfill`, `\\[2pt]`,
+`\small`, `\geometry`, ...): each one has a primitive or a knob that does its job.
 
 ## Vertical rhythm, and one caveat
 
